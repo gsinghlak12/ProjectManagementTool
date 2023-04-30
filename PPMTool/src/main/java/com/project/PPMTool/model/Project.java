@@ -1,7 +1,9 @@
 package com.project.PPMTool.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import java.util.Date;
+import javax.validation.constraints.*;
 
 @Entity
 public class Project {
@@ -9,15 +11,25 @@ public class Project {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @NotBlank(message = "Project name is required")
   private String projectName;
+
+  @NotBlank(message = "Project Identifier is required")
+  @Size(min = 4, max = 5, message = "Please use 4 to 5 characters")
+  @Column(updatable = false, unique = true)
   private String projectIdentifier;
+
+  @NotBlank(message = "Project description is required")
   private String description;
+
+  @JsonFormat(pattern = "yyyy-MM-dd")
   private Date end_date;
 
+  @JsonFormat(pattern = "yyyy-MM-dd")
   private Date created_At;
-  private Date modified_At;
 
-  public Project() {}
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  private Date modified_At;
 
   public Long getId() {
     return id;

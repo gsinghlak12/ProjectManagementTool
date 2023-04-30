@@ -11,7 +11,7 @@ public class ProjectService {
   @Autowired private ProjectRepository projectRepository;
 
   public Project saveOrUpdateProject(Project project) {
-    // TODO: Logic
+    // TODO: Logic + validation for errors etc.
     return projectRepository.save(project);
   }
 

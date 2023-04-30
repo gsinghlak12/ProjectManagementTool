@@ -16,7 +16,6 @@ public class ProjectController {
 
   @PostMapping
   public ResponseEntity<Project> createNewProject(@RequestBody Project project) {
-    // TODO: validation for errors etc.
     projectService.saveOrUpdateProject(project);
     return new ResponseEntity<>(project, HttpStatus.CREATED);
   }
