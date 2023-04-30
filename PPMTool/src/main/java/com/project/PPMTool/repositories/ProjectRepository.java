@@ -47,4 +47,7 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     @Override
     <S extends Project> List<S> findAll(Example<S> example, Sort sort);
+
+    @Override
+    List<Project> findAllById(Iterable<Long> longs);
 }
