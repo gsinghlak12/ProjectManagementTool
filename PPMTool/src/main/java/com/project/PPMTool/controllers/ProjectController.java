@@ -2,6 +2,7 @@ package com.project.PPMTool.controllers;
 
 import com.project.PPMTool.model.Project;
 import com.project.PPMTool.services.ProjectService;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ public class ProjectController {
   @Autowired private ProjectService projectService;
 
   @PostMapping
-  public ResponseEntity<Project> createNewProject(@RequestBody Project project) {
+  public ResponseEntity<Project> createNewProject(@Valid @RequestBody Project project) {
     projectService.saveOrUpdateProject(project);
     return new ResponseEntity<>(project, HttpStatus.CREATED);
   }
