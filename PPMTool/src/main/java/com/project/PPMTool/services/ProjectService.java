@@ -1,5 +1,6 @@
 package com.project.PPMTool.services;
 
+import com.project.PPMTool.exceptions.ProjectIdException;
 import com.project.PPMTool.model.Project;
 import com.project.PPMTool.repositories.ProjectRepository;
 import java.util.List;
@@ -11,8 +12,13 @@ public class ProjectService {
   @Autowired private ProjectRepository projectRepository;
 
   public Project saveOrUpdateProject(Project project) {
-    // TODO: Logic + validation for errors etc.
-    return projectRepository.save(project);
+    try {
+      project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+      return projectRepository.save(project);
+    } catch (Exception e) {
+      throw new ProjectIdException(
+          "Project ID " + project.getProjectIdentifier().toUpperCase() + " already exists.");
+    }
   }
 
   public List<Project> getProjects() {
