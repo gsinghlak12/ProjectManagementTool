@@ -1,12 +1,15 @@
 package com.project.PPMTool.controllers;
 
 import com.project.PPMTool.model.Project;
+import com.project.PPMTool.services.MapValidationErrorService;
 import com.project.PPMTool.services.ProjectService;
 import jakarta.validation.Valid;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,9 +17,16 @@ import org.springframework.web.bind.annotation.*;
 public class ProjectController {
 
   @Autowired private ProjectService projectService;
+  @Autowired private MapValidationErrorService mapValidationErrorService;
 
   @PostMapping
-  public ResponseEntity<Project> createNewProject(@Valid @RequestBody Project project) {
+  public ResponseEntity<?> createNewProject(
+      @Valid @RequestBody Project project, BindingResult result) {
+    ResponseEntity<Map<String, String>> errorMap =
+        mapValidationErrorService.validateProject(result);
+    if (errorMap != null) {
+      return errorMap;
+    }
     projectService.saveOrUpdateProject(project);
     return new ResponseEntity<>(project, HttpStatus.CREATED);
   }
