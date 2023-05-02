@@ -31,6 +31,8 @@ public class Project {
   @JsonFormat(pattern = "yyyy-MM-dd")
   private Date modified_At;
 
+  public Project() {}
+
   public Long getId() {
     return id;
   }
