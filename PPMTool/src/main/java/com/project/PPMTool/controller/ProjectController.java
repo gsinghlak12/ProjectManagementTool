@@ -13,7 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/project")
+@RequestMapping("/api/projects")
 public class ProjectController {
 
   @Autowired private ProjectService projectService;
@@ -41,5 +41,11 @@ public class ProjectController {
   public ResponseEntity<List<Project>> getAllProjects() {
     List<Project> projects = projectService.getProjects();
     return new ResponseEntity<>(projects, HttpStatus.OK);
+  }
+
+  @DeleteMapping("/{projectId}")
+  public ResponseEntity<String> deleteProjectById(@PathVariable String projectId) {
+    projectService.deleteByProjectIdentifier(projectId);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 }
