@@ -1,4 +1,4 @@
-package com.project.PPMTool.services;
+package com.project.PPMTool.service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,9 +15,9 @@ public class MapValidationErrorService {
     if (result.hasErrors()) {
       Map<String, String> errorMap = new HashMap<>();
       for (FieldError error : result.getFieldErrors()) {
-        errorMap.put(error.getField().toString(), error.getDefaultMessage().toString());
+        errorMap.put(error.getField(), error.getDefaultMessage());
       }
-      return new ResponseEntity<Map<String, String>>(errorMap, HttpStatus.BAD_REQUEST);
+      return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
     }
     return null;
   }

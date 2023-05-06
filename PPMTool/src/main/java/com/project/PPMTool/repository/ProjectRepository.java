@@ -1,4 +1,4 @@
-package com.project.PPMTool.repositories;
+package com.project.PPMTool.repository;
 
 import com.project.PPMTool.model.Project;
 import java.util.List;

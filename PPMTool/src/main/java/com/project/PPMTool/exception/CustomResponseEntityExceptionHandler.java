@@ -1,4 +1,4 @@
-package com.project.PPMTool.exceptions;
+package com.project.PPMTool.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
