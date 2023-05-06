@@ -1,8 +1,8 @@
-package com.project.PPMTool.services;
+package com.project.PPMTool.service;
 
-import com.project.PPMTool.exceptions.ProjectIdException;
+import com.project.PPMTool.exception.ProjectIdException;
 import com.project.PPMTool.model.Project;
-import com.project.PPMTool.repositories.ProjectRepository;
+import com.project.PPMTool.repository.ProjectRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

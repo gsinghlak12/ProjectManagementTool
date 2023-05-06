@@ -1,8 +1,8 @@
-package com.project.PPMTool.controllers;
+package com.project.PPMTool.controller;
 
 import com.project.PPMTool.model.Project;
-import com.project.PPMTool.services.MapValidationErrorService;
-import com.project.PPMTool.services.ProjectService;
+import com.project.PPMTool.service.MapValidationErrorService;
+import com.project.PPMTool.service.ProjectService;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Map;
