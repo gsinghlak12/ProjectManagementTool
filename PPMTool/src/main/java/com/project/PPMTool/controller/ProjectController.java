@@ -27,7 +27,7 @@ public class ProjectController {
     if (errorMap != null) {
       return errorMap;
     }
-    projectService.saveOrUpdateProject(project);
+    projectService.createProject(project);
     return new ResponseEntity<>(project, HttpStatus.CREATED);
   }
 
@@ -47,5 +47,12 @@ public class ProjectController {
   public ResponseEntity<String> deleteProjectById(@PathVariable String projectId) {
     projectService.deleteByProjectIdentifier(projectId);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+  }
+
+  @PutMapping("/{projectId}")
+  public ResponseEntity<?> updateProjectById(
+      @PathVariable String projectId, @RequestBody Project project) {
+    Project updatedProject = projectService.updateProjectById(projectId, project);
+    return new ResponseEntity<>(updatedProject, HttpStatus.OK);
   }
 }
