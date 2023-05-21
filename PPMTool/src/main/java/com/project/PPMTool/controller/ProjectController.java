@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/projects")
+@CrossOrigin
 public class ProjectController {
 
   @Autowired private ProjectService projectService;
