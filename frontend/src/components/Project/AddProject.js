@@ -29,7 +29,6 @@ class AddProject extends Component {
             "start_date": this.state.start_date,
             "end_date": this.state.end_date
         };
-        console.log(newProject)
     }
 
     render() {
